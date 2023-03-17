@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AI and Machine Learning Ethics</title>
+    <link rel="stylesheet" href="assets/style/base.css">
+</head>
+
+<body>
+    <div id="container">
+        <h1>The Ethics of AI and Machine Learning</h1>
+
+        <div class="tab">
+            <button class="tablinks" onclick="openRedirect('index.html')">Home</button>
+        </div>
+
+        <div id="article-list">
+            <h2>Recent Ethics Case Examples</h2>
+            <ul id="articles">
+                <!-- article list will be dynamically generated here -->
+            </ul>
+        </div>
+
+
+
+
+    </div>
+
+    <script>
+        // make API call to fetch news data
+        fetch('https://newsapi.org/v2/top-headlines?q=ethics&apiKey=f069359a004f4c589c4d0c850eb19a8a')
+            .then(response => response.json())
+            .then(data => {
+                // loop through articles and create HTML elements for each
+                const articlesList = document.querySelector('#articles');
+                const articles = data.articles;
+                articles.forEach(article => {
+                    const li = document.createElement('li');
+                    const title = document.createElement('h4');
+                    title.textContent = article.title;
+                    const author = document.createElement('p');
+                    author.textContent = `By ${article.author}`;
+                    const date = document.createElement('p');
+                    date.textContent = new Date(article.publishedAt).toLocaleDateString();
+                    li.appendChild(title);
+                    li.appendChild(author);
+                    li.appendChild(date);
+                    articlesList.appendChild(li);
+                });
+            })
+            .catch(error => console.log(error));
+    </script>
+
+    <script type="text/javascript" src="assets/scripts/index.js"></script>
+</body>
