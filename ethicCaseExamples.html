@@ -30,7 +30,7 @@
 
     <script>
         // make API call to fetch news data
-        fetch('https://newsapi.org/v2/top-headlines?q=ethics&apiKey=f069359a004f4c589c4d0c850eb19a8a')
+        fetch('https://newsapi.org/v2/everything?apiKey=f069359a004f4c589c4d0c850eb19a8a&q=AI%20ethics%20OR%20machine%20learning%20ethics%20OR%20algorithmic%20ethics%20OR%20ethics%20of%20artificial%20intelligence')
             .then(response => response.json())
             .then(data => {
                 // loop through articles and create HTML elements for each
