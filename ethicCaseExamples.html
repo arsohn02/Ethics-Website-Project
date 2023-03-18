@@ -17,7 +17,7 @@
         </div>
 
         <div id="article-list">
-            <h2>Recent Ethics Case Examples</h2>
+            <h2>Recent News Articles regarding the Ethics of AI and Machine Learning</h2>
             <ul id="articles">
                 <!-- article list will be dynamically generated here -->
             </ul>
@@ -28,7 +28,52 @@
 
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
+        const options = {
+            method: "GET",
+            url: "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/search/NewsSearchAPI",
+            params: {
+                q: "ai ethics or machine learning ethics or algorithmic ethics or ethics of artificial intelligence",
+                pageNumber: "1",
+                pageSize: "10",
+                autoCorrect: "true",
+                fromPublishedDate: "null",
+                toPublishedDate: "null",
+            },
+            headers: {
+                "X-RapidAPI-Key": "fafe46ba09msh1e53ca553d40de0p1b125cjsn74b7c35339ae",
+                "X-RapidAPI-Host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
+            },
+        };
+
+        axios
+            .request(options)
+            .then(function(response) {
+                const articles = response.data.value;
+                const articleList = document.querySelector("#articles");
+
+                articles.forEach((article) => {
+                    const li = document.createElement("li");
+                    const a = document.createElement("a");
+                    a.href = article.url;
+                    a.target = "_blank";
+                    a.innerText = article.title;
+                    li.appendChild(a);
+                    articleList.appendChild(li);
+                });
+            })
+            .catch(function(error) {
+                console.error(error);
+            });
+    </script>
+    <script type="text/javascript" src="assets/scripts/index.js"></script>
+</body>
+
+</html>
+
+
+<!-- <script>
         // make API call to fetch news data
         fetch('https://newsapi.org/v2/everything?apiKey=f069359a004f4c589c4d0c850eb19a8a&q=AI%20ethics%20OR%20machine%20learning%20ethics%20OR%20algorithmic%20ethics%20OR%20ethics%20of%20artificial%20intelligence')
             .then(response => response.json())
@@ -51,7 +96,4 @@
                 });
             })
             .catch(error => console.log(error));
-    </script>
-
-    <script type="text/javascript" src="assets/scripts/index.js"></script>
-</body>
+    </script> -->
