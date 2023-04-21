@@ -28,10 +28,6 @@
                 <!-- article list will be dynamically generated here -->
             </ul>
         </div>
-
-
-
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -77,29 +73,3 @@
 </body>
 
 </html>
-
-
-<!-- <script>
-        // make API call to fetch news data
-        fetch('https://newsapi.org/v2/everything?apiKey=f069359a004f4c589c4d0c850eb19a8a&q=AI%20ethics%20OR%20machine%20learning%20ethics%20OR%20algorithmic%20ethics%20OR%20ethics%20of%20artificial%20intelligence')
-            .then(response => response.json())
-            .then(data => {
-                // loop through articles and create HTML elements for each
-                const articlesList = document.querySelector('#articles');
-                const articles = data.articles;
-                articles.forEach(article => {
-                    const li = document.createElement('li');
-                    const title = document.createElement('h4');
-                    title.textContent = article.title;
-                    const author = document.createElement('p');
-                    author.textContent = `By ${article.author}`;
-                    const date = document.createElement('p');
-                    date.textContent = new Date(article.publishedAt).toLocaleDateString();
-                    li.appendChild(title);
-                    li.appendChild(author);
-                    li.appendChild(date);
-                    articlesList.appendChild(li);
-                });
-            })
-            .catch(error => console.log(error));
-    </script> -->
