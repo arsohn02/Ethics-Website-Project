@@ -22,10 +22,23 @@ p {
 
 .img-style-1 {
     float: left;
+    max-width: 50%;
+    height: auto;
     margin-right: 10px;
     margin-bottom: 10px;
     padding: 5px;
-    border: 1px ridge #CCC;
+    border: 2px solid #3C403D;
+    object-fit: contain;
+}
+
+.img-style-2 {
+    float: right;
+    max-width: 20%;
+    height: auto;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    /* border: 2px solid #3C403D; */
     object-fit: contain;
 }
 
